@@ -1,0 +1,1241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AgriLoop: IoT-Integrated Water Hyacinth Nanocellulose-Based Smart Biodegradable Mulch Film for Precision Agriculture. Smart India Hackathon deep-tech innovation showcase." />
+    <meta name="keywords" content="Smart India Hackathon, AgriLoop, Water Hyacinth, Nanocellulose, Biodegradable Mulch Film, IoT Precision Irrigation, ESP32, Smart Agriculture, Sustainable Farming" />
+    <meta name="author" content="AgriLoop Innovation Team" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="AgriLoop — From Invasive Weed to Intelligent Farming" />
+    <meta property="og:description" content="IoT-Integrated Water Hyacinth Nanocellulose-Based Smart Biodegradable Mulch Film for Precision Agriculture." />
+    <meta property="og:image" content="./assets/images/hero-farm.jpg" />
+    <meta property="og:type" content="website" />
+
+    <title>AgriLoop — From Invasive Weed to Intelligent Farming | Smart India Hackathon</title>
+    
+    <!-- Google Fonts Preconnect & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232ecc71'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>" />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <!-- Top Scroll Progress Bar -->
+    <div class="scroll-progress-container" aria-hidden="true">
+      <div class="scroll-progress-bar" id="scroll-progress"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="site-header">
+      <div class="container nav-container">
+        <div class="brand-wrapper">
+          <a href="#hero" class="brand-logo" aria-label="AgriLoop Home">
+            <span class="brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A9.49 9.49 0 0 0 12 21c7 0 11-8 11-8s-2.5 1-6 1c-2.3 0-4-1.2-4-3 0-3 5-4 5-4s-3.5.5-6 2.5C10.7 7.2 9 8 7 8c-1.5 0-3-.5-4-1.5L4.5 5C5.8 6 7 6.5 8.5 6.5c3.5 0 7.5-3.5 11.5-3.5 2 0 3 .5 3 .5s-2.5 2.5-6 4.5z"/>
+              </svg>
+            </span>
+            <span>AGRILOOP</span>
+          </a>
+          <span class="sih-tag">SIH INNOVATION SHOWCASE</span>
+        </div>
+
+        <nav aria-label="Main Navigation">
+          <ul class="nav-links">
+            <li><a href="#problem" class="nav-link">Problem</a></li>
+            <li><a href="#big-idea" class="nav-link">Big Idea</a></li>
+            <li><a href="#workflow" class="nav-link">Workflow</a></li>
+            <li><a href="#smart-irrigation" class="nav-link">Smart Irrigation</a></li>
+            <li><a href="#hardware-prototype" class="nav-link">Hardware</a></li>
+            <li><a href="#biodegradable-mulch" class="nav-link">Bio-Mulch</a></li>
+            <li><a href="#feasibility" class="nav-link">Feasibility</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="#hardware-prototype" class="btn-nav-prototype">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+              <rect x="9" y="9" width="6" height="6"></rect>
+              <line x1="9" y1="1" x2="9" y2="4"></line>
+              <line x1="15" y1="1" x2="15" y2="4"></line>
+              <line x1="9" y1="20" x2="9" y2="23"></line>
+              <line x1="15" y1="20" x2="15" y2="23"></line>
+              <line x1="20" y1="9" x2="23" y2="9"></line>
+              <line x1="20" y1="14" x2="23" y2="14"></line>
+              <line x1="1" y1="9" x2="4" y2="9"></line>
+              <line x1="1" y1="14" x2="4" y2="14"></line>
+            </svg>
+            View Prototype
+          </a>
+          <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <a href="#problem" class="nav-link">The Problem</a>
+      <a href="#big-idea" class="nav-link">Our Big Idea</a>
+      <a href="#workflow" class="nav-link">Workflow</a>
+      <a href="#smart-irrigation" class="nav-link">Smart Irrigation (IoT)</a>
+      <a href="#hardware-prototype" class="nav-link">Hardware Prototype</a>
+      <a href="#biodegradable-mulch" class="nav-link">Bio-Mulch Material</a>
+      <a href="#innovation" class="nav-link">Innovation</a>
+      <a href="#feasibility" class="nav-link">Feasibility & Scalability</a>
+      <a href="#challenges" class="nav-link">Challenges & Solutions</a>
+      <a href="#impact" class="nav-link">Impact</a>
+      <a href="#team" class="nav-link">The Team</a>
+    </div>
+
+    <main>
+      <!-- =================================================================
+           1. HERO SECTION
+           ================================================================= -->
+      <section class="hero-section" id="hero">
+        <div class="hero-bg-wrapper" aria-hidden="true">
+          <!-- 4 Layered backgrounds for subtle transitions -->
+          <div class="hero-bg-layer active" style="background-image: url('./assets/images/hero-farm.jpg');" data-scene="0"></div>
+          <div class="hero-bg-layer" style="background-image: url('./assets/images/problem-hyacinth-crisis.jpg');" data-scene="1"></div>
+          <div class="hero-bg-layer" style="background-image: url('./assets/images/biomaterial-film.jpg');" data-scene="2"></div>
+          <div class="hero-bg-layer" style="background-image: url('./assets/images/cta-farm.jpg');" data-scene="3"></div>
+        </div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+
+        <div class="container hero-content">
+          <div class="hero-top-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L1 21h22L12 2zm0 4.5l7.5 13h-15L12 6.5zM11 10v4h2v-4h-2zm0 6v2h2v-2h-2z"/>
+            </svg>
+            SMART INDIA HACKATHON INNOVATION SHOWCASE
+          </div>
+
+          <h1 class="hero-title">AGRILOOP</h1>
+          
+          <h2 class="hero-tagline">From Invasive Weed to Intelligent Farming</h2>
+
+          <p class="hero-full-title">
+            IoT-Integrated Water Hyacinth Nanocellulose-Based Smart Biodegradable Mulch Film for Precision Agriculture
+          </p>
+
+          <div class="hero-labels-grid">
+            <span class="hero-label-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+              SMART AGRICULTURE
+            </span>
+            <span class="hero-label-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 12l2 2 4-4"></path>
+              </svg>
+              BIODEGRADABLE MATERIAL
+            </span>
+            <span class="hero-label-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"></path>
+              </svg>
+              IoT
+            </span>
+            <span class="hero-label-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+              </svg>
+              WASTE-TO-VALUE
+            </span>
+          </div>
+
+          <div class="hero-ctas">
+            <a href="#big-idea" class="btn btn-primary" id="btn-explore-innovation">
+              Explore Innovation
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#hardware-prototype" class="btn btn-secondary" id="btn-view-prototype">
+              View Prototype
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Subtle Background Controller Selector -->
+          <div class="hero-scene-controls" aria-label="Visual Scene Switcher">
+            <button class="scene-btn active" data-scene-index="0">01 Field Deployment</button>
+            <button class="scene-btn" data-scene-index="1">02 Water Hyacinth</button>
+            <button class="scene-btn" data-scene-index="2">03 Bio-Mulch Film</button>
+            <button class="scene-btn" data-scene-index="3">04 Smart Precision</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           2. THE PROBLEM
+           ================================================================= -->
+      <section class="section section-alt" id="problem">
+        <div class="container">
+          <div class="section-header fade-in-up">
+            <span class="section-label">THE CORE PROBLEM STATEMENT</span>
+            <h2 class="section-title">Two Critical Challenges. One Integrated Solution.</h2>
+            <p class="section-subtitle">
+              Tackling aquatic weed ecological hazards and agricultural plastic-water waste through a unified circular innovation.
+            </p>
+          </div>
+
+          <div class="problem-grid">
+            <!-- Problem 01 -->
+            <article class="problem-card fade-in-up">
+              <div class="problem-card-media">
+                <span class="problem-card-number">01</span>
+                <img src="./assets/images/problem-hyacinth-crisis.jpg" alt="Invasive water hyacinth choking water bodies with underutilized rotting biomass" loading="lazy" />
+              </div>
+              <div class="problem-card-body">
+                <span class="problem-category">Aquatic Ecological Hazard</span>
+                <h3 class="problem-title">Invasive Water Hyacinth causes environmental problems and is largely underutilized.</h3>
+                <p class="problem-desc">
+                  Rapid, unchecked infestation of invasive water hyacinth (<em>Eichhornia crassipes</em>) chokes inland rivers and agricultural water reservoirs, disrupts freshwater ecosystems, depletes dissolved oxygen, and requires expensive manual harvesting. Despite containing high-tensile lignocellulosic fibers, millions of tons of harvested biomass are discarded on riverbanks with virtually zero value-added utilization.
+                </p>
+                <div class="problem-impact-tag">
+                  <span class="badge-target">TARGET</span>
+                  Biomass valorization &amp; nanocellulose extraction
+                </div>
+              </div>
+            </article>
+
+            <!-- Problem 02 -->
+            <article class="problem-card fade-in-up">
+              <div class="problem-card-media">
+                <span class="problem-card-number">02</span>
+                <img src="./assets/images/problem-plastic-water-crisis.jpg" alt="Degraded plastic mulch polluting farmland soil alongside inefficient flood irrigation water waste" loading="lazy" />
+              </div>
+              <div class="problem-card-body">
+                <span class="problem-category">Soil &amp; Water Degradation</span>
+                <h3 class="problem-title">Plastic mulch waste and inefficient irrigation lead to soil pollution and unnecessary water consumption.</h3>
+                <p class="problem-desc">
+                  Conventional non-biodegradable polyethylene (PE) agricultural mulch films fragment into hazardous microplastics that permanently contaminate arable topsoil and impede root respiration. Simultaneously, schedule-based flood irrigation results in catastrophic evaporative loss and water runoff without real-time root-zone monitoring.
+                </p>
+                <div class="problem-impact-tag">
+                  <span class="badge-target">TARGET</span>
+                  Biodegradable mulch film &amp; ESP32 precision irrigation
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           3. OUR BIG IDEA
+           ================================================================= -->
+      <section class="section" id="big-idea">
+        <div class="container">
+          <div class="section-header fade-in-up">
+            <span class="section-label">UNIFIED ARCHITECTURE</span>
+            <h2 class="section-title">ONE SYSTEM. THREE PROBLEMS.</h2>
+            <p class="section-subtitle">
+              Bridging biomaterial chemistry and IoT edge electronics into an actionable closed-loop agricultural ecosystem.
+            </p>
+          </div>
+
+          <div class="big-idea-container fade-in-up">
+            <div class="big-idea-quote">
+              <blockquote class="big-idea-quote-text">
+                “AgriLoop combines biomass valorization, biodegradable material development and IoT-based precision irrigation.”
+              </blockquote>
+              <p class="big-idea-quote-desc">
+                From water hyacinth harvesting to in-field autonomous drip actuation, creating a self-sustaining cycle where weed biomass protects crop soil while smart microcontrollers conserve fresh water.
+              </p>
+            </div>
+
+            <!-- Animated Flow Pipeline -->
+            <div class="pipeline-flow" aria-label="End-to-End AgriLoop Conversion Flow">
+              <div class="pipeline-node">
+                <div class="pipeline-node-icon">🌿</div>
+                <div class="pipeline-node-title">Water Hyacinth</div>
+                <div class="pipeline-node-desc">Invasive aquatic biomass harvest</div>
+              </div>
+
+              <div class="pipeline-arrow">→</div>
+
+              <div class="pipeline-node">
+                <div class="pipeline-node-icon">🔬</div>
+                <div class="pipeline-node-title">Cellulose</div>
+                <div class="pipeline-node-desc">Alkali & green bleaching extraction</div>
+              </div>
+
+              <div class="pipeline-arrow">→</div>
+
+              <div class="pipeline-node">
+                <div class="pipeline-node-icon">✨</div>
+                <div class="pipeline-node-title">Nanocellulose</div>
+                <div class="pipeline-node-desc">High aspect-ratio reinforcement</div>
+              </div>
+
+              <div class="pipeline-arrow">→</div>
+
+              <div class="pipeline-node">
+                <div class="pipeline-node-icon">📄</div>
+                <div class="pipeline-node-title">Biodegradable Mulch Film</div>
+                <div class="pipeline-node-desc">Crosslinked bio-polymeric barrier</div>
+              </div>
+
+              <div class="pipeline-arrow">→</div>
+
+              <div class="pipeline-node">
+                <div class="pipeline-node-icon">📡</div>
+                <div class="pipeline-node-title">IoT Monitoring</div>
+                <div class="pipeline-node-desc">Real-time root-zone telemetry</div>
+              </div>
+
+              <div class="pipeline-arrow">→</div>
+
+              <div class="pipeline-node">
+                <div class="pipeline-node-icon">💧</div>
+                <div class="pipeline-node-title">Smart Irrigation</div>
+                <div class="pipeline-node-desc">Closed-loop ESP32 pump actuation</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           4. HOW AGRILOOP WORKS
+           ================================================================= -->
+      <section class="section section-alt" id="workflow">
+        <div class="container">
+          <div class="section-header fade-in-up">
+            <span class="section-label">TECHNICAL TIMELINE</span>
+            <h2 class="section-title">How AgriLoop Works</h2>
+            <p class="section-subtitle">
+              A comprehensive six-phase methodology transitioning invasive weed biomass from aquatic extraction into intelligent field cultivation.
+            </p>
+          </div>
+
+          <div class="timeline-wrapper">
+            <div class="timeline-line" aria-hidden="true"></div>
+
+            <!-- Step 01 -->
+            <div class="timeline-step fade-in-up" data-step="1">
+              <div class="timeline-marker">01</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <span class="timeline-action-badge">COLLECT</span>
+                  <span class="timeline-tag">Phase 1: Raw Feedstock</span>
+                </div>
+                <h3 class="timeline-step-title">Water Hyacinth Biomass Harvesting</h3>
+                <p class="timeline-step-desc">
+                  Collection of invasive water hyacinth (*Eichhornia crassipes*) petioles and stems from infested community water bodies. Thorough washing to eliminate silt, mechanical chopping, and solar drying to prepare uniform lignocellulosic precursor.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 02 -->
+            <div class="timeline-step fade-in-up" data-step="2">
+              <div class="timeline-marker">02</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <span class="timeline-action-badge">EXTRACT</span>
+                  <span class="timeline-tag">Phase 2: Cellulose Fractionation</span>
+                </div>
+                <h3 class="timeline-step-title">Cellulose and Nanocellulose Processing</h3>
+                <p class="timeline-step-desc">
+                  Subjecting dry powdered biomass to standardized alkaline pretreatment (dilute NaOH) to solubilize non-cellulosic hemicellulose and lignin, followed by green chlorine-free hydrogen peroxide (H₂O₂) bleaching. Controlled acid hydrolysis extracts high crystalline nanocellulose fibrils.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 03 -->
+            <div class="timeline-step fade-in-up" data-step="3">
+              <div class="timeline-marker">03</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <span class="timeline-action-badge">FORMULATE</span>
+                  <span class="timeline-tag">Phase 3: Material Synthesis</span>
+                </div>
+                <h3 class="timeline-step-title">Biodegradable Mulch-Film Development</h3>
+                <p class="timeline-step-desc">
+                  Compounding nanocellulose with biobased polymers (chitosan matrix) and eco-friendly plasticizers (glycerol). Addition of non-toxic crosslinkers (citric acid) and beeswax emulsion creates a durable, water-resistant mulch film cast via solvent evaporation.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 04 -->
+            <div class="timeline-step fade-in-up" data-step="4">
+              <div class="timeline-marker">04</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <span class="timeline-action-badge">DEPLOY</span>
+                  <span class="timeline-tag">Phase 4: Field Installation</span>
+                </div>
+                <h3 class="timeline-step-title">Apply Mulch Film to Crop Beds</h3>
+                <p class="timeline-step-desc">
+                  Laying the biodegradable film onto prepared crop ridges with drip lines running underneath. Cutouts facilitate direct seedling emergence while the film suppresses weed germination, stabilizes soil thermal gradients, and curtails evaporation.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 05 -->
+            <div class="timeline-step fade-in-up" data-step="5">
+              <div class="timeline-marker">05</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <span class="timeline-action-badge">SENSE</span>
+                  <span class="timeline-tag">Phase 5: Telemetry Sensing</span>
+                </div>
+                <h3 class="timeline-step-title">Monitor Soil Moisture and Environmental Conditions</h3>
+                <p class="timeline-step-desc">
+                  Capacitive dielectric soil sensors and microclimate probes (DHT22 / DS18B20) continuously read volumetric water content (VWC), soil temperature, and ambient relative humidity directly at root-zone depths.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 06 -->
+            <div class="timeline-step fade-in-up" data-step="6">
+              <div class="timeline-marker">06</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <span class="timeline-action-badge">AUTOMATE</span>
+                  <span class="timeline-tag">Phase 6: Edge Actuation</span>
+                </div>
+                <h3 class="timeline-step-title">ESP32-Controlled Precision Irrigation</h3>
+                <p class="timeline-step-desc">
+                  The onboard ESP32 evaluates telemetry against crop-specific moisture thresholds. Upon detecting water depletion, an optocoupler relay actuates low-power drip solenoids/pumps, replenishing hydration until target moisture equilibrium is re-established.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           5. SMART IRRIGATION (IoT DASHBOARD)
+           ================================================================= -->
+      <section class="section" id="smart-irrigation">
+        <div class="container">
+          <div class="section-header fade-in-up">
+            <span class="section-label">EDGE TELEMETRY DEMONSTRATION</span>
+            <h2 class="section-title">Smart Irrigation</h2>
+            <p class="section-subtitle">
+              Live edge-computing dashboard demonstrating closed-loop soil monitoring and autonomous relay-driven drip actuation.
+            </p>
+          </div>
+
+          <div class="iot-dashboard-container fade-in-up">
+            <!-- Dashboard Header Bar -->
+            <div class="dashboard-header-bar">
+              <div class="dashboard-station-info">
+                <span class="station-pulse" aria-hidden="true"></span>
+                <div>
+                  <div class="station-name">AGRILOOP-NODE-01 (ESP32-WROOM-32)</div>
+                  <div class="station-meta">Firmware v1.4.2 • Mode: Threshold Edge Controller • Protocol: MQTT / ADC</div>
+                </div>
+              </div>
+              <div class="dashboard-controls">
+                <span class="badge-demo">DEMO DATA (Simulated Telemetry for Evaluation)</span>
+              </div>
+            </div>
+
+            <!-- Telemetry Cards Grid -->
+            <div class="iot-metrics-grid">
+              <!-- Metric 1: Soil Moisture -->
+              <div class="metric-card">
+                <div class="metric-label-row">
+                  <span class="metric-name">SOIL MOISTURE</span>
+                  <span class="metric-icon">💧</span>
+                </div>
+                <div class="metric-value-row">
+                  <span class="metric-value" id="metric-moisture-val">24.6</span>
+                  <span class="metric-unit">% VWC</span>
+                </div>
+                <div class="metric-status">Below Target Threshold (&lt;30.0%)</div>
+              </div>
+
+              <!-- Metric 2: Air Temp -->
+              <div class="metric-card">
+                <div class="metric-label-row">
+                  <span class="metric-name">AIR TEMPERATURE</span>
+                  <span class="metric-icon">🌡️</span>
+                </div>
+                <div class="metric-value-row">
+                  <span class="metric-value" id="metric-temp-val">29.4</span>
+                  <span class="metric-unit">°C</span>
+                </div>
+                <div class="metric-status">Ambient Sensor: DHT22</div>
+              </div>
+
+              <!-- Metric 3: Humidity -->
+              <div class="metric-card">
+                <div class="metric-label-row">
+                  <span class="metric-name">HUMIDITY</span>
+                  <span class="metric-icon">💨</span>
+                </div>
+                <div class="metric-value-row">
+                  <span class="metric-value" id="metric-humidity-val">68</span>
+                  <span class="metric-unit">% RH</span>
+                </div>
+                <div class="metric-status">Optimal Transpiration Zone</div>
+              </div>
+
+              <!-- Metric 4: Pump Status -->
+              <div class="metric-card">
+                <div class="metric-label-row">
+                  <span class="metric-name">PUMP STATUS</span>
+                  <span class="metric-icon">⚡</span>
+                </div>
+                <div class="metric-value-row">
+                  <span class="pump-indicator" id="metric-pump-status">ON</span>
+                </div>
+                <div class="metric-status">Relay Actuated via ESP32 GPIO26</div>
+              </div>
+            </div>
+
+            <!-- Interactive Testing Bar -->
+            <div class="dashboard-interactive-bar">
+              <div class="slider-group">
+                <label for="moisture-slider" class="slider-label">Simulate Soil Moisture Input:</label>
+                <input type="range" id="moisture-slider" class="slider-input" min="10" max="60" step="0.5" value="24.6" aria-label="Simulate Soil Moisture" />
+                <span class="slider-val-readout" id="slider-readout">24.6%</span>
+              </div>
+              <button class="override-btn" id="override-btn">MANUAL OVERRIDE: AUTO</button>
+            </div>
+
+            <!-- Animated 4-Stage Control Flow -->
+            <div class="control-loop-wrapper">
+              <div class="control-loop-title">Autonomous Control Loop</div>
+              <div class="control-loop-steps" aria-label="Closed Loop Sequence">
+                <div class="loop-step active" data-loop="0">
+                  <div class="loop-step-name">1. SENSE</div>
+                  <div class="loop-step-desc">Analog VWC via Capacitive Probe</div>
+                </div>
+                <div class="loop-arrow">→</div>
+                <div class="loop-step" data-loop="1">
+                  <div class="loop-step-name">2. DECIDE</div>
+                  <div class="loop-step-desc">ESP32 checks threshold vs setpoint</div>
+                </div>
+                <div class="loop-arrow">→</div>
+                <div class="loop-step" data-loop="2">
+                  <div class="loop-step-name">3. IRRIGATE</div>
+                  <div class="loop-step-desc">Relay switches DC drip pump ON</div>
+                </div>
+                <div class="loop-arrow">→</div>
+                <div class="loop-step" data-loop="3">
+                  <div class="loop-step-name">4. MONITOR</div>
+                  <div class="loop-step-desc">Telemetry logged to OLED & dashboard</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scientific Explanation Box -->
+            <div class="dashboard-explanation-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span>
+                <strong>System Logic:</strong> “The ESP32 receives sensor data and controls the relay-driven irrigation pump according to predefined soil-moisture conditions.” When VWC drops below 30.0%, the pump engages automatically to maintain optimum root-zone water balance under the bio-mulch layer.
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           6. HARDWARE PROTOTYPE
+           ================================================================= -->
+      <section class="section section-alt" id="hardware-prototype">
+        <div class="container">
+          <div class="section-header fade-in-up">
+            <span class="section-label">CIRCUITRY & FIELD HARDWARE</span>
+            <h2 class="section-title">FROM CONCEPT TO FIELD</h2>
+            <p class="section-subtitle">
+              Inspect our fully integrated field deployment solution. Click on any interactive radar pin or selector below to examine component specifications and operational roles.
+            </p>
+          </div>
+
+          <div class="prototype-explorer-container fade-in-up">
+            <!-- Prototype Visual & Hotspots Canvas -->
+            <div class="prototype-canvas-wrapper" id="prototype-canvas">
+              <img src="./assets/images/prototype-hardware.png" alt="AgriLoop IoT Precision Agriculture Field Prototype Installation" loading="lazy" />
+              <!-- Radar hotspot buttons will be injected here by hotspots.js -->
+              <div id="hotspots-container"></div>
+            </div>
+
+            <!-- Component Details Card -->
+            <div class="prototype-details-panel">
+              <div class="prototype-component-tag" id="component-tag">Microcontroller Unit</div>
+              <h3 class="prototype-component-title" id="component-title">ESP32 Microcontroller</h3>
+              <p class="prototype-component-role" id="component-role">
+                Main controller for sensor processing and irrigation control. Runs edge decision logic and wireless telemetry transmission.
+              </p>
+
+              <div class="prototype-specs-list" id="component-specs">
+                <!-- Specs injected dynamically -->
+              </div>
+
+              <!-- Quick Switcher Tabs -->
+              <div class="hotspot-selector-nav" id="hotspots-nav" aria-label="Component Quick Selectors">
+                <!-- Injected via hotspots.js -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           7. BIODEGRADABLE MULCH FILM
+           ================================================================= -->
+      <section class="section" id="biodegradable-mulch">
+        <div class="container">
+          <div class="section-header fade-in-up">
+            <span class="section-label">MATERIALS SCIENCE & SYNTHESIS</span>
+            <h2 class="section-title">FROM BIOMASS TO BIO-MATERIAL</h2>
+            <p class="section-subtitle">
+              Engineering high-tensile, soil-degradable agricultural mulch film utilizing water hyacinth nanocellulose reinforcement.
+            </p>
+          </div>
+
+          <div class="biomaterial-container fade-in-up">
+            <!-- Material Sample Visual Card -->
+            <div class="biomaterial-image-card">
+              <img src="./assets/images/biomaterial-film.jpg" alt="Water hyacinth nanocellulose biodegradable mulch film laboratory sample" loading="lazy" />
+              <div class="biomaterial-target-card">
+                <div class="target-badge-label">TARGET FUNCTIONAL PERIOD</div>
+                <div class="target-val-large">90–120 DAYS*</div>
+                <div class="target-val-disclaimer">*Target value; requires laboratory and field validation.</div>
+              </div>
+            </div>
+
+            <!-- Material Details & Chemical Process Flow -->
+            <div class="biomaterial-details">
+              <div>
+                <h3 style="font-family: var(--font-heading); font-size: 1.45rem; margin-bottom: 12px; color: #ffffff;">
+                  Conversion Pipeline
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 18px;">
+                  Pretreatment dissolves non-cellulosic impurities to isolate cellulose fibers, followed by mechanical or chemical shearing to obtain nanocellulose fibrils. The biocomposite is compounded with biodegradable plasticizers and natural hydrophobic barriers.
+                </p>
+              </div>
+
+              <!-- Conversion Chain -->
+              <div class="conversion-chain" aria-label="Material Synthesis Chain">
+                <span class="chain-item">Water Hyacinth Biomass</span>
+                <span class="chain-sep">→</span>
+                <span class="chain-item">Pretreatment</span>
+                <span class="chain-sep">→</span>
+                <span class="chain-item">Cellulose</span>
+                <span class="chain-sep">→</span>
+                <span class="chain-item">Nanocellulose</span>
+                <span class="chain-sep">→</span>
+                <span class="chain-item">Film Formulation</span>
+                <span class="chain-sep">→</span>
+                <span class="chain-item">Biodegradable Mulch Film</span>
+              </div>
+
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px;">
+                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-brand); margin-bottom: 6px; text-transform: uppercase;">
+                  Soil Mineralization Target
+                </div>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+                  Unlike synthetic polyethylene, the nanocellulose film undergoes natural microbial assimilation post-harvest, converting into benign organic humus, water, and CO₂ without leaving hazardous microplastic residues.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Component Formulation Breakdown: Biobased vs Processing Chemicals -->
+          <div class="fade-in-up">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 14px;">
+              <div>
+                <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: #ffffff;">
+                  Formulation Breakdown: Biological vs. Chemical Components
+                </h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">
+                  Clearly separating biodegradable bio-based materials from chemical processing reagents.
+                </p>
+              </div>
+
+              <!-- Filter Tabs -->
+              <div class="matrix-filter-tabs">
+                <button class="filter-tab active" data-filter="all">All Components (8)</button>
+                <button class="filter-tab" data-filter="bio">Biobased Materials (4)</button>
+                <button class="filter-tab" data-filter="chem">Processing Reagents (4)</button>
+              </div>
+            </div>
+
+            <!-- Grid dynamically filled via materials.js -->
+            <div class="components-grid" id="materials-grid"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           8. INNOVATION
+           ================================================================= -->
+      <section class="section section-alt" id="innovation">
+        <div class="container">
+          <div class="section-header fade-in-up">
+            <span class="section-label">COMPETITIVE ADVANTAGE</span>
+            <h2 class="section-title">WHAT MAKES AGRILOOP DIFFERENT?</h2>
+            <p class="section-subtitle">
+              Pioneering a dual-vector synergy that couples bio-waste conversion with microclimate-driven edge irrigation.
+            </p>
+          </div>
+
+          <div class="innovation-grid">
+            <!-- 01 Waste to Value -->
+            <div class="innovation-card fade-in-up">
+              <div class="innovation-num">01</div>
+              <div class="innovation-icon-box">♻️</div>
+              <h3 class="innovation-title">WASTE-TO-VALUE</h3>
+              <p class="innovation-desc">
+                Water hyacinth converted into a value-added agricultural material. Transforms a devastating municipal freshwater pest into an economic, farm-strengthening asset for rural communities.
+              </p>
+            </div>
+
+            <!-- 02 Biodegradable Material -->
+            <div class="innovation-card fade-in-up">
+              <div class="innovation-num">02</div>
+              <div class="innovation-icon-box">🌱</div>
+              <h3 class="innovation-title">BIODEGRADABLE MATERIAL</h3>
+              <p class="innovation-desc">
+                Nanocellulose-based mulch-film approach. Delivers moisture retention and weed control while eliminating the labor-intensive retrieval and hazardous disposal of fossil-fuel plastic mulch.
+              </p>
+            </div>
+
+            <!-- 03 IoT Integration -->
+            <div class="innovation-card fade-in-up">
+              <div class="innovation-num">03</div>
+              <div class="innovation-icon-box">📶</div>
+              <h3 class="innovation-title">IoT INTEGRATION</h3>
+              <p class="innovation-desc">
+                Real-time field-condition monitoring. Deploys capacitive soil moisture probes and microclimate telemetry beneath the mulch to measure true root-zone hydration dynamics.
+              </p>
+            </div>
+
+            <!-- 04 Closed-Loop Irrigation -->
+            <div class="innovation-card fade-in-up">
+              <div class="innovation-num">04</div>
+              <div class="innovation-icon-box">🔄</div>
+              <h3 class="innovation-title">CLOSED-LOOP IRRIGATION</h3>
+              <p class="innovation-desc">
+                Sense → Decide → Irrigate → Monitor. Autonomous edge decision architecture eliminates water over-allocation, ensuring water is delivered only when and where crops require hydration.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           9. FEASIBILITY & VIABILITY
+           ================================================================= -->
+      <section class="section" id="feasibility">
+        <div class="container">
+          <div class="section-header fade-in-up">
+            <span class="section-label">PROJECT VIABILITY</span>
+            <h2 class="section-title">Feasibility & Viability</h2>
+            <p class="section-subtitle">
+              Structured evaluation across engineering, financial, environmental, and scaling horizons with defensible targets.
+            </p>
+          </div>
+
+          <div class="feasibility-grid">
+            <!-- Technical -->
+            <div class="feasibility-card fade-in-up">
+              <div class="feasibility-pillar-tag">Pillar I</div>
+              <h3 class="feasibility-title">TECHNICAL</h3>
+              <p class="feasibility-desc">
+                Existing IoT hardware and material-processing approaches can support prototype development. Proven chemical delignification and solvent casting methods provide established benchmarks for lab extraction.
+              </p>
+            </div>
+
+            <!-- Economic -->
+            <div class="feasibility-card fade-in-up">
+              <div class="feasibility-pillar-tag">Pillar II</div>
+              <h3 class="feasibility-title">ECONOMIC</h3>
+              <p class="feasibility-desc">
+                Locally available biomass and low-cost electronic components support prototype affordability. Zero-cost feedstock harvesting offsets raw chemical reagent expenses for competitive production costs.
+              </p>
+            </div>
+
+            <!-- Environmental -->
+            <div class="feasibility-card fade-in-up">
+              <div class="feasibility-pillar-tag">Pillar III</div>
+              <h3 class="feasibility-title">ENVIRONMENTAL</h3>
+              <p class="feasibility-desc">
+                Biomass utilization and biodegradable material development can support reduced plastic dependency, helping remediate choked aquatic water bodies while avoiding petrochemical farm waste.
+              </p>
+            </div>
+
+            <!-- Scalability -->
+            <div class="feasibility-card fade-in-up">
+              <div class="feasibility-pillar-tag">Pillar IV</div>
+              <h3 class="feasibility-title">SCALABILITY</h3>
+              <p class="feasibility-desc">
+                Proposed scaling trajectory progressing through rigorous academic and empirical gates: from laboratory formulation to multi-hectare farm validation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Scalability Pathway Diagram -->
+          <div class="scalability-pathway-card fade-in-up">
+            <h3 class="scalability-title">PROPOSED SCALABILITY PATHWAY</h3>
+            <p class="scalability-desc">
+              Structured four-tier verification framework required prior to widespread agricultural commercialization.
+            </p>
+
+            <div class="pathway-stages">
+              <div class="pathway-stage">
+                <div class="stage-badge">PHASE 1</div>
+                <div class="stage-name">LAB BENCH</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Extraction & casting trials</div>
+              </div>
+
+              <div class="pathway-arrow">→</div>
+
+              <div class="pathway-stage">
+                <div class="stage-badge">PHASE 2</div>
+                <div class="stage-name">POT TRIAL</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Microbial degradation test</div>
+              </div>
+
+              <div class="pathway-arrow">→</div>
+
+              <div class="pathway-stage">
+                <div class="stage-badge">PHASE 3</div>
+                <div class="stage-name">FIELD TRIAL</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Weathering & telemetry mesh</div>
+              </div>
+
+              <div class="pathway-arrow">→</div>
+
+              <div class="pathway-stage">
+                <div class="stage-badge">PHASE 4</div>
+                <div class="stage-name">SCALE-UP</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Continuous extrusion & FPO roll-out</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           10. CHALLENGES & SOLUTIONS
+           ================================================================= -->
+      <section class="section section-alt" id="challenges">
+        <div class="container">
+          <div class="section-header fade-in-up">
+            <span class="section-label">ENGINEERING MITIGATION</span>
+            <h2 class="section-title">CHALLENGES & SOLUTIONS</h2>
+            <p class="section-subtitle">
+              Anticipating biological heterogeneity and environmental stressors through systematic engineering strategies.
+            </p>
+          </div>
+
+          <div class="challenges-list">
+            <!-- Row 1 -->
+            <div class="challenge-row fade-in-up">
+              <div class="challenge-side">
+                <span class="challenge-tag">CHALLENGE 01</span>
+                <div class="challenge-name">Biomass Variation</div>
+                <div class="challenge-desc">Moisture, age, and chemical composition vary substantially across water bodies.</div>
+              </div>
+              <div class="challenge-connector">→</div>
+              <div class="solution-side">
+                <span class="solution-tag">ENGINEERED MITIGATION</span>
+                <div class="solution-name">Standardized Pretreatment</div>
+                <div class="solution-desc">Rigorous sorting, standardized drying to &lt;10% moisture, and controlled alkali delignification protocols.</div>
+              </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="challenge-row fade-in-up">
+              <div class="challenge-side">
+                <span class="challenge-tag">CHALLENGE 02</span>
+                <div class="challenge-name">Film Performance</div>
+                <div class="challenge-desc">Pure cellulose films can exhibit excessive water sensitivity and low wet tensile strength.</div>
+              </div>
+              <div class="challenge-connector">→</div>
+              <div class="solution-side">
+                <span class="solution-tag">ENGINEERED MITIGATION</span>
+                <div class="solution-name">Formulation & Thickness Optimization</div>
+                <div class="solution-desc">Crosslinking with citric acid, chitosan matrix reinforcement, and hydrophobic beeswax micro-emulsion.</div>
+              </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="challenge-row fade-in-up">
+              <div class="challenge-side">
+                <span class="challenge-tag">CHALLENGE 03</span>
+                <div class="challenge-name">Controlled Biodegradation</div>
+                <div class="challenge-desc">Risk of prematurely decaying prior to crop harvest in warm, wet soils.</div>
+              </div>
+              <div class="challenge-connector">→</div>
+              <div class="solution-side">
+                <span class="solution-tag">ENGINEERED MITIGATION</span>
+                <div class="solution-name">Composition & Thickness Tuning</div>
+                <div class="solution-desc">Calibrating nanocellulose loading and crosslinker density to achieve targeted 90–120 day functional window.</div>
+              </div>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="challenge-row fade-in-up">
+              <div class="challenge-side">
+                <span class="challenge-tag">CHALLENGE 04</span>
+                <div class="challenge-name">Sensor Reliability</div>
+                <div class="challenge-desc">Soil salinity drift, mineral encrustation, and dielectric variability across soil textures.</div>
+              </div>
+              <div class="challenge-connector">→</div>
+              <div class="solution-side">
+                <span class="solution-tag">ENGINEERED MITIGATION</span>
+                <div class="solution-name">Calibration & Periodic Validation</div>
+                <div class="solution-desc">Corrosion-proof capacitive dielectric design with soil-specific calibration curves and temperature compensation.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           11. IMPACT
+           ================================================================= -->
+      <section class="section" id="impact">
+        <div class="container">
+          <div class="section-header fade-in-up">
+            <span class="section-label">SYSTEMIC VALUE TRANSFORMATION</span>
+            <h2 class="section-title">WHAT CHANGES WITH AGRILOOP?</h2>
+            <p class="section-subtitle">
+              Evaluating the anticipated transition across ecological, material, and hydrological dimensions.
+            </p>
+          </div>
+
+          <div class="impact-grid">
+            <!-- Impact 1 -->
+            <div class="impact-card fade-in-up">
+              <div class="impact-conversion-row">
+                <div class="impact-from">
+                  <div class="impact-from-badge">PREVIOUS STATE</div>
+                  <div class="impact-from-title">AQUATIC WEED WASTE</div>
+                </div>
+                <div class="impact-arrow">→</div>
+                <div class="impact-to">
+                  <div class="impact-to-badge">PROPOSED TRANSFORMATION</div>
+                  <div class="impact-to-title">ECONOMIC VALUE</div>
+                </div>
+              </div>
+              <p class="impact-desc">
+                Invasive weed biomass that previously burdened civic municipal bodies with eradication costs becomes a localized raw material stream supporting rural circular economies.
+              </p>
+            </div>
+
+            <!-- Impact 2 -->
+            <div class="impact-card fade-in-up">
+              <div class="impact-conversion-row">
+                <div class="impact-from">
+                  <div class="impact-from-badge">PREVIOUS STATE</div>
+                  <div class="impact-from-title">PLASTIC DEPENDENCY</div>
+                </div>
+                <div class="impact-arrow">→</div>
+                <div class="impact-to">
+                  <div class="impact-to-badge">PROPOSED TRANSFORMATION</div>
+                  <div class="impact-to-title">BIODEGRADABLE ALTERNATIVE</div>
+                </div>
+              </div>
+              <p class="impact-desc">
+                Eliminates toxic non-degradable polyethylene films that fragment into microplastics, allowing farmers to plow the soil post-season without labor-intensive plastic retrieval.
+              </p>
+            </div>
+
+            <!-- Impact 3 -->
+            <div class="impact-card fade-in-up">
+              <div class="impact-conversion-row">
+                <div class="impact-from">
+                  <div class="impact-from-badge">PREVIOUS STATE</div>
+                  <div class="impact-from-title">MANUAL / FIXED IRRIGATION</div>
+                </div>
+                <div class="impact-arrow">→</div>
+                <div class="impact-to">
+                  <div class="impact-to-badge">PROPOSED TRANSFORMATION</div>
+                  <div class="impact-to-title">SENSOR-BASED IRRIGATION</div>
+                </div>
+              </div>
+              <p class="impact-desc">
+                Replaces arbitrary timer or flood irrigation with real-time root-zone telemetry, supplying exact hydration pulses to reduce water consumption and conserve agricultural power.
+              </p>
+            </div>
+
+            <!-- Impact 4 -->
+            <div class="impact-card fade-in-up">
+              <div class="impact-conversion-row">
+                <div class="impact-from">
+                  <div class="impact-from-badge">PREVIOUS STATE</div>
+                  <div class="impact-from-title">CONVENTIONAL FARMING</div>
+                </div>
+                <div class="impact-arrow">→</div>
+                <div class="impact-to">
+                  <div class="impact-to-badge">PROPOSED TRANSFORMATION</div>
+                  <div class="impact-to-title">SMARTER WATER MANAGEMENT</div>
+                </div>
+              </div>
+              <p class="impact-desc">
+                Integrates bio-barrier evaporation suppression with automated replenishment, optimizing water-use efficiency (WUE) and safeguarding crop health during drought stress.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           12. THE TEAM
+           ================================================================= -->
+      <section class="section section-alt" id="team">
+        <div class="container">
+          <div class="section-header fade-in-up">
+            <span class="section-label">STUDENT INNOVATORS</span>
+            <h2 class="section-title">THE TEAM BEHIND AGRILOOP</h2>
+            <p class="section-subtitle">
+              Smart India Hackathon multidisciplinary engineering team combining materials chemistry, embedded hardware, and agronomy.
+            </p>
+          </div>
+
+          <!-- =================================================================
+               FACULTY MENTOR & INSTITUTIONAL GUIDE
+               ================================================================= -->
+          <div class="mentor-spotlight-card fade-in-up">
+            <div class="mentor-avatar-col">
+              <div class="mentor-photo-wrapper">
+                <img src="./assets/images/mentor-muthusamy.png" alt="Mr. K. Muthusamy - Technical Competitions Head" class="photo-muthusamy" loading="lazy" />
+                <span class="mentor-badge-pill">FACULTY MENTOR</span>
+              </div>
+            </div>
+            <div class="mentor-info-col">
+              <div class="mentor-eyebrow">SMART INDIA HACKATHON • PROJECT MENTOR &amp; GUIDE</div>
+              <h3 class="mentor-name">Mr. K. MUTHUSAMY</h3>
+              <div class="mentor-title">Technical Competitions Head</div>
+              <div class="mentor-inst">Rathinam Technical Campus</div>
+              <p class="mentor-desc">
+                Guiding multidisciplinary innovation, competitive problem formulation, and technology validation for national hackathons and sustainable agricultural engineering.
+              </p>
+              <div class="mentor-meta-tags">
+                <span class="mentor-tag">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  Technical Competitions Head
+                </span>
+                <span class="mentor-tag">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  Rathinam Technical Campus
+                </span>
+                <span class="mentor-tag">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  SIH Project Mentor
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STUDENT INNOVATORS SUBHEADING -->
+          <div class="team-subheading fade-in-up">
+            <span class="team-subheading-tag">STUDENT INNOVATORS (6-MEMBER TEAM)</span>
+            <div class="team-subheading-title">Core Research &amp; Engineering Developers</div>
+          </div>
+
+          <div class="team-grid">
+            <!-- 01: Team Leader - PANDIRAJHA T -->
+            <div class="team-card team-lead-card fade-in-up">
+              <div class="team-photo-wrapper">
+                <span class="team-badge-pill team-lead-badge">TEAM LEADER</span>
+                <img src="./assets/images/team-pandirajha.jpg" alt="Pandirajha T - Team Leader" class="photo-pandirajha" loading="lazy" />
+              </div>
+              <div class="team-card-content">
+                <h3 class="team-member-name">PANDIRAJHA T</h3>
+                <div class="team-member-role">Team Leader &amp; System Architect</div>
+                <div class="team-member-dept">3rd Year • Core Project Lead</div>
+                <div class="team-member-inst">Rathinam Technical Campus</div>
+              </div>
+            </div>
+
+            <!-- 02: HARI VAMSEE P -->
+            <div class="team-card fade-in-up">
+              <div class="team-photo-wrapper">
+                <span class="team-badge-pill">HARDWARE</span>
+                <img src="./assets/images/team-harivamsee.png" alt="Hari Vamsee P - ECE & Hardware" class="photo-harivamsee" loading="lazy" />
+              </div>
+              <div class="team-card-content">
+                <h3 class="team-member-name">HARI VAMSEE P</h3>
+                <div class="team-member-role">ECE &amp; Hardware Lead</div>
+                <div class="team-member-dept">ECE • 2nd Year</div>
+                <div class="team-member-inst">Rathinam Technical Campus</div>
+              </div>
+            </div>
+
+            <!-- 03: NANDHA KUMAR S -->
+            <div class="team-card fade-in-up">
+              <div class="team-photo-wrapper">
+                <span class="team-badge-pill">SOFTWARE</span>
+                <img src="./assets/images/team-nandhakumar.jpg" alt="Nandha Kumar S - CSE & Software" class="photo-nandhakumar" loading="lazy" />
+              </div>
+              <div class="team-card-content">
+                <h3 class="team-member-name">NANDHA KUMAR S</h3>
+                <div class="team-member-role">CSE &amp; Software Lead</div>
+                <div class="team-member-dept">CSE • 2nd Year</div>
+                <div class="team-member-inst">Rathinam Technical Campus</div>
+              </div>
+            </div>
+
+            <!-- 04: SRINITHI R -->
+            <div class="team-card fade-in-up">
+              <div class="team-photo-wrapper">
+                <span class="team-badge-pill">EXTRACTION</span>
+                <img src="./assets/images/team-srinithi.jpg" alt="Srinithi R - Nanocellulose Extraction" class="photo-srinithi" loading="lazy" />
+              </div>
+              <div class="team-card-content">
+                <h3 class="team-member-name">SRINITHI R</h3>
+                <div class="team-member-role">Nanocellulose Extraction Lead</div>
+                <div class="team-member-dept">Biomaterials • 3rd Year</div>
+                <div class="team-member-inst">Rathinam Technical Campus</div>
+              </div>
+            </div>
+
+            <!-- 05: AFRIN SULTHANA T -->
+            <div class="team-card fade-in-up">
+              <div class="team-photo-wrapper">
+                <span class="team-badge-pill">EXTRACTION</span>
+                <img src="./assets/images/team-afrin.png" alt="Afrin Sulthana T - Nanocellulose Extraction" class="photo-afrin" loading="lazy" />
+              </div>
+              <div class="team-card-content">
+                <h3 class="team-member-name">AFRIN SULTHANA T</h3>
+                <div class="team-member-role">Nanocellulose Extraction Lead</div>
+                <div class="team-member-dept">Biomaterials • 3rd Year</div>
+                <div class="team-member-inst">Rathinam Technical Campus</div>
+              </div>
+            </div>
+
+            <!-- 06: GOKUL P -->
+            <div class="team-card fade-in-up">
+              <div class="team-photo-wrapper">
+                <span class="team-badge-pill">FILM PREP</span>
+                <img src="./assets/images/team-gokul.jpg" alt="Gokul P - Film Preparation" class="photo-gokul" loading="lazy" />
+              </div>
+              <div class="team-card-content">
+                <h3 class="team-member-name">GOKUL P</h3>
+                <div class="team-member-role">Film Preparation Lead</div>
+                <div class="team-member-dept">Biomaterials &amp; Formulation • 3rd Year</div>
+                <div class="team-member-inst">Rathinam Technical Campus</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           13. FINAL CTA & FOOTER
+           ================================================================= -->
+      <section class="cta-section" id="final-cta" style="background-image: url('./assets/images/cta-farm.jpg');">
+        <div class="cta-overlay" aria-hidden="true"></div>
+        <div class="container cta-content">
+          <h2 class="cta-title">AGRILOOP</h2>
+          <p class="cta-tagline">
+            From an invasive aquatic weed<br />to an intelligent farming solution.
+          </p>
+
+          <div class="cta-synergy-row">
+            <span class="cta-synergy-item">Water Hyacinth</span>
+            <span class="cta-synergy-mult">×</span>
+            <span class="cta-synergy-item">Nanocellulose</span>
+            <span class="cta-synergy-mult">×</span>
+            <span class="cta-synergy-item">Biodegradable Mulch</span>
+            <span class="cta-synergy-mult">×</span>
+            <span class="cta-synergy-item">IoT</span>
+            <span class="cta-synergy-mult">×</span>
+            <span class="cta-synergy-item">Smart Irrigation</span>
+          </div>
+
+          <div class="cta-actions">
+            <a href="#hardware-prototype" class="btn btn-primary">Explore Prototype</a>
+            <a href="#big-idea" class="btn btn-secondary">Back to Innovation</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <div>
+            <div class="brand-logo" style="margin-bottom: 8px;">
+              <span class="brand-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A9.49 9.49 0 0 0 12 21c7 0 11-8 11-8s-2.5 1-6 1c-2.3 0-4-1.2-4-3 0-3 5-4 5-4s-3.5.5-6 2.5C10.7 7.2 9 8 7 8c-1.5 0-3-.5-4-1.5L4.5 5C5.8 6 7 6.5 8.5 6.5c3.5 0 7.5-3.5 11.5-3.5 2 0 3 .5 3 .5s-2.5 2.5-6 4.5z"/>
+                </svg>
+              </span>
+              <span>AGRILOOP</span>
+            </div>
+            <p class="footer-brand-desc">
+              IoT-Integrated Water Hyacinth Nanocellulose-Based Smart Biodegradable Mulch Film for Precision Agriculture. Developed for the Smart India Hackathon (SIH) under the Smart Agriculture & Green Technology tracks.
+            </p>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Navigation</div>
+            <ul class="footer-links">
+              <li><a href="#hero" class="footer-link">Home</a></li>
+              <li><a href="#problem" class="footer-link">The Problem</a></li>
+              <li><a href="#big-idea" class="footer-link">Big Idea</a></li>
+              <li><a href="#workflow" class="footer-link">Workflow</a></li>
+              <li><a href="#smart-irrigation" class="footer-link">IoT Telemetry</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Technical Specs</div>
+            <ul class="footer-links">
+              <li><a href="#hardware-prototype" class="footer-link">Hardware Testbed</a></li>
+              <li><a href="#biodegradable-mulch" class="footer-link">Bio-Mulch Chemistry</a></li>
+              <li><a href="#feasibility" class="footer-link">Feasibility & Pathway</a></li>
+              <li><a href="#challenges" class="footer-link">Risk Mitigation</a></li>
+              <li><a href="#team" class="footer-link">Student Team</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-disclaimer-box">
+          <strong>Academic & Technical Disclaimer:</strong> AgriLoop is a Smart India Hackathon student innovation project. Functional degradation timelines (e.g. target 90–120 days), tensile properties, and field yields represent design targets and proposed engineering parameters subject to formal laboratory characterization and field validation. Sensor telemetry presented on the live dashboard represents simulated demonstration data (DEMO DATA) configured to illustrate edge relay control logic.
+        </div>
+
+        <div class="footer-bottom">
+          <div>© 2026 AgriLoop Team — Smart India Hackathon Innovation Showcase</div>
+          <div>Built with Vanilla CSS, ES Modules & Vite</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Floating Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+
+    <!-- Unified Interactive Application Script -->
+    <script type="module" src="./src/main.js"></script>
+    <script>
+      // Fallback for direct opening without local server (file:///)
+      if (window.location.protocol === 'file:' && !window.agriLoopLoaded) {
+        var fallbackScript = document.createElement('script');
+        fallbackScript.src = './src/main.js';
+        document.body.appendChild(fallbackScript);
+      }
+    </script>
+  </body>
+</html>
+
